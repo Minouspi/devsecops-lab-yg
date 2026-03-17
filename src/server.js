@@ -60,21 +60,4 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK' });
 });
 
-const sqlite3 = require('sqlite3'); // important
-const db = new sqlite3.Database(':memory:');
-
-app.get('/api/user', (req, res) => {
-  const userId = req.query.id;
-
-  // ❌ SQL Injection claire pour Semgrep
-  const query = "SELECT * FROM users WHERE id = " + userId;
-
-  db.all(query, [], (err, rows) => {   // 👈 clé pour détection
-    if (err) {
-      return res.status(500).json({ error: err.message });
-    }
-    res.json({ rows });
-  });
-});
-
 app.listen(3000, () => console.log('Secure server running'));
