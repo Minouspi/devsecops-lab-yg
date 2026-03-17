@@ -60,21 +60,14 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK' });
 });
 
-// Pas d'endpoint de debug en production
-if (process.env.NODE_ENV !== 'production') {
-  app.get('/debug', (req, res) => {
-    res.json({ message: 'Debug mode' });
-  });
-}
 app.get('/api/user', (req, res) => {
   const userId = req.query.id;
 
-  // ❌ Vulnérable SQL Injection
+  // ❌ SQL Injection volontaire
   const query = "SELECT * FROM users WHERE id = " + userId;
 
   console.log("Executing query:", query);
 
-  // Simulation (pas de vraie DB)
   res.json({ query });
 });
 
