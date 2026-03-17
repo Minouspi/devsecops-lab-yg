@@ -1,6 +1,6 @@
 ## Devsecops Lab
 
-![Security](https://github.com/<user>/<repo>/workflows/DevSecOps%20Pipeline/badge.svg)
+![Security](https://github.com/Minouspi/devsecops-lab-yg/workflows/DevSecOps%20Pipeline/badge.svg)
 
 ---
 
