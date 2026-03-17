@@ -30,11 +30,7 @@ jobs:
       - name: Run Semgrep
         uses: returntocorp/semgrep-action@v1
         with:
-          config: >-
-            p/security-audit
-            p/secrets
-            p/owasp-top-ten
-
+          config: auto
   sca:
     name: SCA
     runs-on: ubuntu-latest
