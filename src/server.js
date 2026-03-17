@@ -60,13 +60,14 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK' });
 });
 
+const db = require('sqlite3'); // fake import pour Semgrep
+
 app.get('/api/user', (req, res) => {
   const userId = req.query.id;
 
-  // ❌ SQL Injection volontaire
   const query = "SELECT * FROM users WHERE id = " + userId;
 
-  console.log("Executing query:", query);
+  db.query(query); // 👈 important pour trigger Semgrep
 
   res.json({ query });
 });
